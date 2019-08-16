@@ -85,6 +85,21 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+  title: 'Lambda student - webPT8',
+  date: '13 August 2019',
+  firstParagraph: 'Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space vSpace Space Space Space Space Space Space Space Space Space Space Space vvSpace Space vSpace Space vvvvvvSpace Space Space vSpace vvvvSpace Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space Space',
+  secondParagraph: 'Second Space Second SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond SpaceSecond Space',
+  thirdParagraph: 'The End.'
+  },
+  {
+    title: 'To <div>, or not to </div>, that is the question?',
+    date: '6 June 2019',
+    firstParagraph: 'Yes. Keep it to where you and future web developers can understand your encrypted code.',
+    secondParagraph: 'Seriously, don\'t get carried away. People beside yourself have to read this stuff. Also, check your spelling. Super annoying to have to spell check while trying to read your encrypted code!',
+    thirdParagraph: 'Thank you.'
+  
   }
 ];
 
@@ -109,6 +124,126 @@ const data = [
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
+  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article
 
 */
+
+/* <div class="article">
+  <h2>{title of the article}</h2>
+  <p class="date">{date of the article}</p>
+
+  {three separate paragraph elements}
+
+    <span class='expandButton'></span>
+</div> */
+
+const newArticle = document.querySelector('.articles');
+
+function articleCreator(array) {
+  const news = document.createElement('div')
+  news.classList.add('article');
+
+  const title = document.createElement('h2')
+  title.textContent = array.title
+  news.appendChild(title)
+
+  const date = document.createElement('p')
+  date.textContent = array.date
+  date.classList.add('date')
+  news.appendChild(date)
+
+  const p1 = document.createElement('p')
+  p1.textContent = array.firstParagraph
+  news.appendChild(p1)
+
+  const p2 = document.createElement('p')
+  p2.textContent = array.secondParagraph
+  news.appendChild(p2)
+
+  const p3 = document.createElement('p')
+  p3.textContent = array.thirdParagraph
+  news.appendChild(p3)
+  
+  const span = document.createElement('span')
+  span.textContent = 'Read More!'
+  span.classList.add('expandButton')
+  news.appendChild(span)
+
+  span.addEventListener('click', () => {
+    news.classList.toggle('article-open');
+  })
+    return news
+  }
+  // callback the 'items' in the array.
+  data.forEach((item) => {
+    let article = articleCreator(item);
+    newArticle.appendChild(article);
+
+  });
+
+  // for(let i = 0; i < data.length; i++){
+  //   let news = articleCreator(news[i]);
+  //   header.appendChild(news);
+  // }
+// let newsArray = data.map((item) => {
+  //   let article = articleCreator(item);
+  //   return article;
+  // })
+  // returns a new array, with the new item, after being mainipulated by the callback.
+
+
+  // function textCreator(text) {
+    
+    // news.classList.add(`h2${title}`);
+
+//   return p
+// }
+
+// function buttonCreator() {
+ 
+
+//   return span
+// }
+
+
+// let header = document.querySelector('.header')
+
+// header.appendChild(articleCreator('title'));
+// header.appendChild(articleCreator('date'));
+
+
+// news.addEventListener('')
+
+// function articleDate(){
+//   let dates = createElement('date');
+
+//   dates.textContent = "Article one";
+
+//   dates.classList.add('dates')
+//   dates.classList.add('dates1');
+//   dates.classList.add('dates2');
+
+//   dates.addEventListener('click', (event) => {
+//     alert('This article is: ${event.target.textContent}')
+//   })
+//   return dates
+// }
+
+// const article1 = articleCreator('Article two');
+
+// const article2 = articleCreator('Article three');
+
+
+// let articleNewArray = document.querySelector('.articles')
+// data.map( (item ) => {
+//   let article = articleCreator(item);
+//   header.appendChild(article);
+
+//   return articleNewArray
+// })
+
+
+// let btn = document.querySelectorAll('.menu-button');
+// button.forEach( () => {
+//   alert('The button is clicked')
+// });
